@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
@@ -22,6 +23,27 @@ def click_checkbox(driver, locator):
     if not checkbox.is_selected():
         checkbox.click()
 
-def click_option_button(driver, locator):
+def click(driver, locator):
     option_button = driver.find_element(*locator)
     option_button.click()
+
+def send_keys_enter(driver, locator, text):
+    input_field = driver.find_element(*locator)
+    input_field.clear()
+    input_field.send_keys(text, Keys.ENTER)
+
+def send_keys(driver, locator, text):
+    input_field = driver.find_element(*locator)
+    input_field.clear()
+    input_field.send_keys(text)
+
+def scroll_to_element(driver, locator):
+    element = driver.find_element(*locator)
+    driver.execute_script("arguments[0].scrollIntoView(true);", element)
+
+
+
+
+
+    
+
