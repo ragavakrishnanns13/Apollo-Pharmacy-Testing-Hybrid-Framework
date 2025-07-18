@@ -1,0 +1,27 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+def switch_window(driver, window_index):
+    windows = driver.window_handles
+    driver.switch_to.window(windows[window_index])
+
+def switch_frame(driver, frame_locator):
+    frame = WebDriverWait(driver, 10).until(
+        EC.frame_to_be_available_and_switch_to_it((By.ID, frame_locator))
+    )
+
+def select_dropdown_option(driver, locator, option_text):
+    dropdown = Select(driver.find_element(*locator))
+    dropdown.select_by_visible_text(option_text)
+
+def click_checkbox(driver, locator):
+    checkbox = driver.find_element(*locator)
+    if not checkbox.is_selected():
+        checkbox.click()
+
+def click_option_button(driver, locator):
+    option_button = driver.find_element(*locator)
+    option_button.click()
