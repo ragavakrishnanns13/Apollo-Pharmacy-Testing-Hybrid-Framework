@@ -1,14 +1,25 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+from utilities.config_reader import ConfigReader
 
-@pytest.fixture(scope="function")
-def driver():
-    options = Options()
-    options.add_argument("--start-maximized")
-    service = Service()
+@pytest.fixture()
+def setup():
+    driver = webdriver.Chrome()
+    driver.maximize_window()
+    driver.implicitly_wait(10)
 
-    driver = webdriver.Chrome(service=service, options=options)
+    configobj = ConfigReader()
+    url = configobj.get_url()
+    driver.get(url)
+
     yield driver
+
     driver.quit()
+
+
+
+
+
+
+
+
