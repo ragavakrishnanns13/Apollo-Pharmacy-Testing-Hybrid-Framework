@@ -22,10 +22,3 @@ A robust and scalable test automation suite built with **Pytest**, following the
 | `pytest-xdist`    | Parallel test execution                  |
 | `Selenium`        | UI automation for web components         |
 | `Allure` (optional) | Test reporting and visualization       |
-
-## 🚀 Getting Started
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/apollo-pharmacy-tests.git
-cd apollo-pharmacy-tests
